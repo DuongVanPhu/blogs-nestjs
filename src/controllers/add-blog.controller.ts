@@ -7,12 +7,11 @@ export class AddBlogController {
   @Post('json')
   exportToJson(@Req() body): string {
     this.fs.writeFile('./src/data/myJson.json', 'duong', (err) => {});
-    console.log(body);
     return 'This action adds a new cat';
   }
 
   @Get('json')
   findAll(): string {
-    return 'This action returns all json';
+    return 'This action returns all cats';
   }
 }
