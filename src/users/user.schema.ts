@@ -18,6 +18,9 @@ export class User {
   @Prop()
   lastname: string;
 
+  @Prop()
+  currentHashedRefreshToken: string;
+
   @Prop({ type: Types.ObjectId })
   _id: Types.ObjectId;
 }

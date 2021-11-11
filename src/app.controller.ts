@@ -1,12 +1,9 @@
-import { Controller, Get, Post, UseGuards, Request } from '@nestjs/common';
-import { ApiTags } from '@nestjs/swagger';
-import { AuthGuard } from '@nestjs/passport';
+import { Controller, Get, Request, UseGuards } from '@nestjs/common';
+
 import { AppService } from './app.service';
-import { LocalAuthGuard } from './auth/local-auth.guard';
 import { AuthService } from './auth/auth.service';
 import { JwtAuthGuard } from './auth/jwt-auth.guard';
 import { Public } from './auth/constants';
-
 
 @Controller()
 export class AppController {
@@ -20,13 +17,6 @@ export class AppController {
     return this.appService.getHello();
   }
 
-  // @ApiTags('cats')
-  // @UseGuards(LocalAuthGuard)
-  // @Post('auth/login')
-  // async login(@Request() req) {
-  //   return await this.authService.login(req.user);
-  // }
-
   @UseGuards(JwtAuthGuard)
   @Get('profile')
   getProfile(@Request() req) {
@@ -36,6 +26,6 @@ export class AppController {
   @Public()
   @Get('public')
   getPublish() {
-    return 'Phu Duong'
+    return 'Phu Duong';
   }
 }
